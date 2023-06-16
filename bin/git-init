@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+if [ $# -eq 2 ]
+then
+  git init
+  git config user.name "$1"
+  git config user.email "$2"
+  git config credential.helper cache
+else
+  echo "Informe seu nome e email."
+  echo "Exemplo: git-init 'Seu nome completo' 'seu-email@seu-dominio'"
+fi

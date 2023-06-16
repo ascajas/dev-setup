@@ -1,0 +1,28 @@
+#!/bin/env bash
+
+versao="7.3.2"
+
+docker container stop zookeeper
+docker rm zookeeper
+docker rmi confluentinc/cp-zookeeper:$versao
+
+docker volume remove zookeeper_secrets
+docker volume remove zookeeper_data
+docker volume remove zookeeper_log
+
+docker volume create zookeeper_secrets
+docker volume create zookeeper_data
+docker volume create zookeeper_log
+
+docker run \
+  --hostname zookeeper \
+  --name zookeeper \
+  --restart always \
+  -p 2181:2181 \
+  -e "ZOOKEEPER_CLIENT_PORT=2181" \
+  -e "ZOOKEEPER_TICK_TIME=2000" \
+  -v zookeeper_secrets:/etc/zookeeper/secrets \
+  -v zookeeper_data:/var/lib/zookeeper/data \
+  -v zookeeper_log:/var/lib/zookeeper/log \
+  -d \
+  confluentinc/cp-zookeeper:$versao

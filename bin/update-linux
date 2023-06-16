@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+killall snap-store
+apt update && \
+apt full-upgrade -y && \
+apt autoremove -y && \
+apt autoclean && \
+snap refresh

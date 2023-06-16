@@ -1,0 +1,31 @@
+#!/bin/env bash
+
+versao="7.3.2"
+
+docker container stop kafka
+docker rm kafka
+docker rmi confluentinc/cp-kafka:$versao
+
+docker volume remove kafka_secrets
+docker volume remove kafka_data
+
+docker volume create kafka_secrets
+docker volume create kafka_data
+
+docker run \
+  --hostname kafka \
+  --name kafka \
+  --restart always \
+  --link zookeeper:zookeeper \
+  -p 9092:9092 \
+  -e "KAFKA_BROKER_ID=1" \
+  -e "KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181" \
+  -e "KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT" \
+  -e "KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092" \
+  -e "KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1" \
+  -e "KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1" \
+  -e "KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1" \
+  -v kafka_secrets:/etc/kafka/secrets \
+  -v kafka_data:/var/lib/kafka/data \
+  -d \
+  confluentinc/cp-kafka:$versao

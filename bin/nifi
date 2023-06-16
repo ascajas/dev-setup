@@ -1,0 +1,39 @@
+#!/bin/env bash
+
+docker container stop nifi
+docker rm nifi
+docker rmi apache/nifi:latest
+
+docker volume remove nifi_conf
+docker volume remove nifi_content
+docker volume remove nifi_database
+docker volume remove nifi_flowfile
+docker volume remove nifi_logs
+docker volume remove nifi_provenance
+docker volume remove nifi_state
+
+docker volume create nifi_conf
+docker volume create nifi_content
+docker volume create nifi_database
+docker volume create nifi_flowfile
+docker volume create nifi_logs
+docker volume create nifi_provenance
+docker volume create nifi_state
+
+docker run --name nifi \
+  -p 8443:8443 \
+  -e SINGLE_USER_CREDENTIALS_USERNAME=admin \
+  -e SINGLE_USER_CREDENTIALS_PASSWORD=123456789012 \
+  -v nifi_conf:/opt/nifi/nifi-current/conf \
+  -v nifi_content:/opt/nifi/nifi-current/content_repository \
+  -v nifi_database:/opt/nifi/nifi-current/database_repository \
+  -v nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository \
+  -v nifi_logs:/opt/nifi/nifi-current/logs \
+  -v nifi_provenance:/opt/nifi/nifi-current/provenance_repository \
+  -v nifi_state:/opt/nifi/nifi-current/state \
+  -d \
+  apache/nifi:latest
+
+sleep 10
+
+docker logs nifi | grep Generated
