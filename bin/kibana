@@ -1,16 +1,37 @@
 #!/bin/env bash
 
 versao="7.17.10"
-docker container stop kibana
-docker rm kibana
-docker rmi kibana:$versao
 
-docker run \
-  --hostname kibana \
-  --name kibana \
-  --restart always \
-  --link elasticsearch:elasticsearch \
-  -p 5601:5601 \
-  -e "ELASTICSEARCH_URL=http://elasticsearch:9200" \
-  -d \
-  kibana:$versao
+function down() {
+  docker container stop kibana
+  docker rm kibana
+  docker rmi kibana:$versao
+}
+
+function up() {
+  docker run \
+    --hostname kibana \
+    --name kibana \
+    --restart always \
+    --link elasticsearch:elasticsearch \
+    -p 5601:5601 \
+    -e "ELASTICSEARCH_URL=http://elasticsearch:9200" \
+    -d \
+    kibana:$versao
+}
+
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi

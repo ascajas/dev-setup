@@ -1,20 +1,39 @@
 #!/bin/env bash
 
 versao="latest"
-docker container stop pihole
-docker rm pihole
-docker rmi pihole/pihole:$versao
 
-# docker volume remove pihole_data
-# docker volume create pihole_data
+function down() {
+  docker container stop pihole
+  docker rm pihole
+  docker rmi pihole/pihole:$versao
+  # docker volume remove pihole_data
+}
 
-docker run \
-  --hostname pihole \
-  --name pihole \
-  --restart always \
-  -p 531:53 \
-  -p 8020:80 \
-  -e "TZ=America/Sao_Paulo" \
-  -e "WEBPASSWORD=123456" \
-  -d \
-  pihole/pihole:$versao
+function up(){
+  # docker volume create pihole_data
+  docker run \
+    --hostname pihole \
+    --name pihole \
+    --restart always \
+    -p 531:53 \
+    -p 8020:80 \
+    -e "TZ=America/Sao_Paulo" \
+    -e "WEBPASSWORD=123456" \
+    -d \
+    pihole/pihole:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi

@@ -1,23 +1,42 @@
 #!/bin/env bash
 
 versao="7.17.10"
-docker container stop elasticsearch
-docker rm elasticsearch
-docker rmi elasticsearch:$versao
 
-docker volume remove elastic_data
-docker volume create elastic_data
+function down() {
+  docker container stop elasticsearch
+  docker rm elasticsearch
+  docker rmi elasticsearch:$versao
+  docker volume remove elastic_data
+}
 
-docker run \
-  --hostname elasticsearch \
-  --name elasticsearch \
-  --restart always \
-  -p 9200:9200 \
-  -p 9300:9300 \
-  -e "discovery.type=single-node" \
-  -e "xpack.monitoring.enabled=true" \
-  -e "xpack.security.enabled=false" \
-  -e "ES_JAVA_OPTS=-Xms2g -Xmx2g" \
-  -v elastic_data:/usr/share/elasticsearch/data \
-  -d \
-  elasticsearch:$versao
+function up() {
+  docker volume create elastic_data
+  docker run \
+    --hostname elasticsearch \
+    --name elasticsearch \
+    --restart always \
+    -p 9200:9200 \
+    -p 9300:9300 \
+    -e "discovery.type=single-node" \
+    -e "xpack.monitoring.enabled=true" \
+    -e "xpack.security.enabled=false" \
+    -e "ES_JAVA_OPTS=-Xms2g -Xmx2g" \
+    -v elastic_data:/usr/share/elasticsearch/data \
+    -d \
+    elasticsearch:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi

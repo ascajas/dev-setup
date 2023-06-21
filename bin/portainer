@@ -1,18 +1,38 @@
 #!/bin/env bash
 
-docker container stop portainer
-docker rm portainer
+versao="latest"
 
-docker volume remove portainer_data
-docker volume create portainer_data
+function down() {
+  docker container stop portainer
+  docker rm portainer
+  docker rmi portainer/portainer-ce:$versao
+  docker volume remove portainer_data
+}
 
-docker rmi portainer/portainer-ce:latest
-docker run \
-  -d \
-  -p 8010:8000 \
-  -p 9443:9443 \
-  --name portainer \
-  --restart=always \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v portainer_data:/data \
-  portainer/portainer-ce:latest
+function up() {
+  docker volume create portainer_data
+  docker run \
+    -d \
+    -p 8010:8000 \
+    -p 9443:9443 \
+    --name portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer-ce:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi
