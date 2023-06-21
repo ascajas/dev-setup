@@ -43,7 +43,7 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka | sudo bash ```
 ***
 
 > ### kibana
@@ -55,7 +55,7 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana | sudo bash ```
 ***
 
 > ### Nifi
@@ -66,7 +66,7 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: admin  
 > - Senha: 123456789012  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi | sudo bash ```
 ***
 
 > ### Pihole
@@ -78,7 +78,7 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Senha: 123456  
 > - Porta de serviço: 531
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole | sudo bash ```
 ***
 > ### Portainer
 > #### *Observações*
@@ -88,7 +88,7 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: admin  
 > - Senha: 123456789012  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer | sudo bash ```
 ***
 > ### Rabbitmq
 > #### *Observações*
@@ -99,17 +99,17 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Senha: guest  
 > - Porta de serviço: 5672
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq | sudo bash ```
 ***
 > ### Update-Linux
 > #### *Observações*
 > - Atualização do linux debian/ubuntu para quem esta tendo problemas na sua atualização automática e erros na snap-store. 
 > #### *Comando para atualizar* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/update-linux | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/update-linux | sudo bash ```
 ***
 > ### Zookeeper
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 180M
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper | bash ```
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper | sudo bash ```
 ***
