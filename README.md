@@ -4,7 +4,6 @@ A idéia do dev-setup é que o desenvolvedor possa testar os serviços via **doc
 
 A exclusão dos serviços seguem a mesma idéia removendo com um único comando inclusive os volumes docker onde eventuais dados estejam armazenados.
 
-Quando um comando é executado ele remove qualquer container, e seus volumes, que por ventura exista relacionado a ele e que tenha subido em uma execução anterior do comando. Portanto não é recomendado o uso em produção pois há risco de perda de dados.
 ***
 
 ## Binários disponíveis  
@@ -18,23 +17,43 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch | sudo bash ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
 > #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Git-init
 > #### *Observações*
 > - Inicia o git com as configurações de nome, email e armazenamento de senha em cache permanente.
 > #### *Comando para iniciar* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/git-init | sudo bash ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/git-init \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd "Seu nome completo" "seu@email" && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Install-php
 > #### *Observações*
 > - Instala o php + extensões + composer + symfony
 > #### *Comando para instalar* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/install-php | sudo bash ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/install-php \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### kafka
@@ -47,9 +66,19 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### kibana
@@ -62,9 +91,19 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Mysql
@@ -77,10 +116,20 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Senha: admin  
 > - Senha de root: root
 > - Banco de dados: db
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Nifi
@@ -91,10 +140,20 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - https://localhost:8443
 > - Usuário: admin  
 > - Senha: 123456789012  
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Pihole
@@ -106,10 +165,20 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: admin  
 > - Senha: 123456  
 > - Porta de serviço: 531
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 > ### Portainer
 > #### *Observações*
@@ -119,10 +188,20 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - https://localhost:9443
 > - Usuário: admin  
 > - Senha: 123456789012  
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Postgres
@@ -133,10 +212,20 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - pgsql://localhost:5432
 > - Usuário: postgres  
 > - Senha: postgres  
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 
 > ### Rabbitmq
@@ -148,23 +237,72 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Usuário: guest  
 > - Senha: guest  
 > - Porta de serviço: 5672
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***
+> ### Redis
+> #### *Observações*
+> - Consumo mínimo aproximado de memória RAM: 170M
+> - Versão: latest
+> #### *Acesso local* 
+> - Usuário: <não precisa>  
+> - Senha: redis  
+> - Porta de serviço: 6379
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/redis \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/redis \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
+***
+
 > ### Update-Linux
 > #### *Observações*
 > - Atualização do linux debian/ubuntu para quem esta tendo problemas na sua atualização automática e erros na snap-store. 
-> #### *Comando para atualizar* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/update-linux | sudo bash ```
+> #### *Comando para atualizar*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/update-linux \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd && \ ```  
+> ``` sudo rm ./cmd ```
 ***
 > ### Zookeeper
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 180M
 > - Versão=7.3.2
-> #### *Comando para subir* 
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper | sudo bash ```
-> #### *Comando para excluir o container e seus volumes*
-> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+> #### *Comando para subir*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd up && \ ```  
+> ``` sudo rm ./cmd ```
+> #### *Comando para excluir o container e seus volumes*  
+> ``` curl \ ```  
+> ``` https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper \ ```  
+> ``` -o cmd && \ ```  
+> ``` sudo chmod +x ./cmd && \ ```  
+> ``` sudo ./cmd down && \ ```  
+> ``` sudo rm ./cmd ```
 ***

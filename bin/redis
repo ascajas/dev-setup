@@ -1,0 +1,38 @@
+#!/bin/env bash
+
+versao="latest"
+
+function down() {
+  docker container stop redis
+  docker rm redis
+  docker rmi redis:$versao
+  docker volume remove redis_data
+}
+
+function up() {
+  docker volume create redis_data
+  docker run \
+    --hostname redis \
+    --name redis \
+    --restart always \
+    -p 6379:6379 \
+    -v redis_data:/data \
+    -d \
+    redis:$versao \
+    redis-server --requirepass redis
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi
