@@ -1,0 +1,40 @@
+#!/bin/env bash
+
+versao="latest"
+
+function down() {
+  docker container stop mysql
+  docker rm mysql
+  docker rmi mysql:$versao
+  docker volume remove mysql_data
+}
+
+function up() {
+  docker volume create mysql_data
+  docker run \
+    --name mysql \
+    --restart always \
+    -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -e MYSQL_USER=admin \
+    -e MYSQL_PASSWORD=admin \
+    -e MYSQL_DATABASE=db \
+    -v mysql_data:/var/lib/mysql \
+    -d \
+    mysql:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi

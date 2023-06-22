@@ -12,12 +12,15 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > ### Elasticsearch
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 2.5G
+> - Versão: 7.17.10
 > #### *Acesso local* 
 > - http://localhost:9200
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/elasticsearch -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 
 > ### Git-init
@@ -38,40 +41,66 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 400M
 > - Dependente do Zookeeper, portando inicie o Zookeeper primeiro.
+> - Versão: 7.3.2
 > #### *Acesso local* 
 > - http://localhost:9092
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kafka -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 
 > ### kibana
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 320M
 > - Dependente do Elasticsearch, portanto inicie o Elasticsearch primeiro.
+> - Versão: 7.17.10
 > #### *Acesso local* 
 > - http://localhost:5601
 > - Usuário: <não precisa>  
 > - Senha: <não precisa>  
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/kibana -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+***
+
+> ### Mysql
+> #### *Observações*
+> - Consumo mínimo aproximado de memória RAM: 400M
+> - Versão: latest
+> #### *Acesso local* 
+> - mysql://localhost:3306
+> - Usuário: admin  
+> - Senha: admin  
+> - Senha de root: root
+> - Banco de dados: db
+> #### *Comando para subir* 
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/mysql -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 
 > ### Nifi
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 1.5G
+> - Versão: latest
 > #### *Acesso local* 
 > - https://localhost:8443
 > - Usuário: admin  
 > - Senha: 123456789012  
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/nifi -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 
 > ### Pihole
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 90M
+> - Versão: latest
 > #### *Acesso local* 
 > - http://localhost:8020/admin
 > - Usuário: admin  
@@ -79,20 +108,41 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Porta de serviço: 531
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/pihole -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 > ### Portainer
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 12M
+> - Versão: latest
 > #### *Acesso local* 
 > - https://localhost:9443
 > - Usuário: admin  
 > - Senha: 123456789012  
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/portainer -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
+
+> ### Postgres
+> #### *Observações*
+> - Consumo mínimo aproximado de memória RAM: 35M
+> - Versão: latest
+> #### *Acesso local* 
+> - pgsql://localhost:5432
+> - Usuário: postgres  
+> - Senha: postgres  
+> #### *Comando para subir* 
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/postgres -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
+***
+
 > ### Rabbitmq
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 170M
+> - Versão: 3-management
 > #### *Acesso local* 
 > - http://localhost:15672  
 > - Usuário: guest  
@@ -100,6 +150,8 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > - Porta de serviço: 5672
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/rabbitmq -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***
 > ### Update-Linux
 > #### *Observações*
@@ -110,6 +162,9 @@ Quando um comando é executado ele remove qualquer container, e seus volumes, qu
 > ### Zookeeper
 > #### *Observações*
 > - Consumo mínimo aproximado de memória RAM: 180M
+> - Versão=7.3.2
 > #### *Comando para subir* 
 > ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper | sudo bash ```
+> #### *Comando para excluir o container e seus volumes*
+> ``` curl https://raw.githubusercontent.com/ascajas/dev-setup/main/bin/zookeeper -o cmd && sudo chmod +x ./cmd && sudo ./cmd down && sudo rm ./cmd ```
 ***

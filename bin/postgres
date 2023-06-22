@@ -1,0 +1,38 @@
+#!/bin/env bash
+
+versao="latest"
+
+function down() {
+  docker container stop postgres
+  docker rm postgres
+  docker rmi postgres:$versao
+  docker volume remove postgres_data
+}
+
+function up() {
+  docker volume create postgres_data
+  docker run \
+    --name postgres \
+    --restart always \
+    -p 5432:5432 \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASSWORD=postgres \
+    -v postgres_data:/var/lib/postgresql/data \
+    -d \
+    postgres:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi

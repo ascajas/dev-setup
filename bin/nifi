@@ -24,6 +24,7 @@ function up() {
   docker volume create nifi_provenance
   docker volume create nifi_state
   docker run --name nifi \
+    --restart always \
     -p 8443:8443 \
     -e SINGLE_USER_CREDENTIALS_USERNAME=admin \
     -e SINGLE_USER_CREDENTIALS_PASSWORD=123456789012 \
