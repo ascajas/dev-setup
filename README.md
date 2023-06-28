@@ -254,7 +254,7 @@ A exclusão dos serviços seguem a mesma idéia removendo com um único comando 
 ***
 > ### Redis
 > #### *Observações*
-> - Consumo mínimo aproximado de memória RAM: 170M
+> - Consumo mínimo aproximado de memória RAM: 4M
 > - Versão: latest
 > #### *Acesso local* 
 > - Usuário: <não precisa>  
