@@ -1,0 +1,37 @@
+#!/bin/env bash
+
+versao="latest"
+
+function down() {
+  docker container stop prometheus
+  docker rm prometheus
+  docker rmi prom/prometheus:$versao
+  docker volume remove prometheus_data
+}
+
+function up() {
+  docker volume create prometheus_data
+  docker run \
+    --hostname prometheus \
+    --name prometheus \
+    --restart always \
+    -p 9090:9090 \
+    -v prometheus_data:/prometheus \
+    -d \
+    prom/prometheus:$versao
+}
+
+if [ $# -eq 0 ]
+then
+  down
+  up
+else
+  if [ "$1" == "down" ]
+  then
+    down
+  fi
+  if [ "$1" == "up" ]
+  then
+    up
+  fi
+fi
